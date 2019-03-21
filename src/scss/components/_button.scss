@@ -1,0 +1,17 @@
+.button {
+	cursor: pointer;
+	outline: none;
+	
+	&__collapse {
+		color: $color_light_grey;
+		border-top-right-radius: 115px;
+		border-bottom-right-radius: 115px; /* 100px of height + 10px of border */
+		border: 1px solid $color_grey;
+		border-left: 1px solid $color_white;
+		padding: .1rem .4rem .1rem .2rem;
+
+		&:hover {
+			color: $color_primary;
+		}
+	}
+}

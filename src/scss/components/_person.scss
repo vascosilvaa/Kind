@@ -1,0 +1,69 @@
+.person {
+	cursor: pointer;
+
+	&__with-avatar {
+		display: flex;
+		align-items: center;
+		img {
+			margin-right: .8rem;
+		}
+		.person-section {
+			display: flex;
+			align-items: center;
+			&__name {
+				font-weight: $font_weight_bold;
+				font-size: $font_size_m;
+				color: $color_black;
+				margin-right: .5rem;
+			}
+		}
+	}
+	&__with-avatar-and-state {
+		display: flex;
+		align-items: center;
+		img {
+			margin-right: .7rem;
+		}
+		.person-section {
+			display: flex;
+			flex-direction: column;
+			&__name {
+				font-weight: $font_weight_bold;
+				font-size: $font_size_m;
+				color: $color_white;
+				margin-bottom: .2rem;
+			}
+			&__state {
+				font-weight: $font_weight_light;
+				font-size: $font_size_xxs;
+				color: $color_white;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+		}
+		
+		
+	}
+
+	.person__state {
+		&--active {
+			color: $color_state_active
+		}
+		&--busy {
+			color: $color_state_busy
+		}
+		&--away {
+			color: $color_state_away
+		}
+		&--l {
+			font-size: $font_size_l
+		}
+		&--s {
+			font-size: 0.5rem
+		}
+		&--m {
+			font-size: $font_size_m
+		}
+	}
+}

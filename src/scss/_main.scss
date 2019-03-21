@@ -1,0 +1,24 @@
+@import './_fonts';
+@import './_base';
+@import './_layout';
+@import './components/_button';
+@import './components/_avatar';
+@import './components/_person';
+@import './components/_chat';
+@import './components/_message';
+
+.margin-auto {
+	margin: auto;
+}
+
+.margin-r-auto {
+	margin-right: auto!important;
+}
+
+.margin-r-0 {
+	margin-right: 0!important;
+}
+
+.pointer {
+	cursor: pointer;
+}

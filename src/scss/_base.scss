@@ -1,0 +1,52 @@
+// Base scss --> Resets/Variables/Mixins/Utils
+
+// font family
+$font_family_sans-serif: 'Roboto',
+"Helvetica Neue",
+Helvetica,
+Arial,
+sans-serif !default;
+$font_family_serif: 'Roboto Slab',
+Georgia,
+Cambria,
+"Times New Roman",
+Times,
+serif;
+
+
+// font size
+$font_size_xxxl: 1.5rem;
+$font_size_xxl: 1.3rem;
+$font_size_xl: 1.2rem;
+$font_size_l: 1.1rem;
+$font_size_m: 1rem; // 16px
+$font_size_s: 0.9rem;
+$font_size_xs: 0.8rem;
+$font_size_xxs: 0.7rem;
+
+// font weight
+$font_weight_light: 100;
+$font_weight_normal: 300;
+$font_weight_bold: 400;
+$font_weight_bolder: 500;
+
+// colors
+$color_primary: #5CA997;
+$color_secondary: #5B707E;
+$color_white: #FFFFFF;
+$color_black: #505151;
+$color_grey: #EBEDEF;
+$color_light_grey: #BAC1C9;
+$color_alert: #BF2727;
+$color_state_active: #5CA997;
+$color_state_busy: #BF2727;
+$color_state_away: #E5A76C;
+
+// icon sizes
+$icon_size_xxl: 22px;
+$icon_size_xl: 20px;
+$icon_size_l: 18px;
+$icon_size_m: 16px;
+$icon_size_s: 14px;
+$icon_size_xs: 12px;
+

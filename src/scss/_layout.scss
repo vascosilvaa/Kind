@@ -1,0 +1,169 @@
+// Layout --> Overall layout of the containers
+body {
+	margin:0;
+	font-family: $font_family_sans-serif;
+	font-weight: $font_weight_normal;
+	background: #e7e7e7
+}
+.Chat {
+	max-width: 1200px;
+	min-width: 320px;
+	margin: 0 auto;
+	height: 100vh;
+
+	.Topbar {
+		height: 90px;
+		background-color: $color_secondary;
+		color: $color_white;
+		display: flex;
+		align-items: center;
+		padding: 0 1.5rem;
+
+		.topbar {
+			&__title {
+				margin-right: auto;
+				font-size: $font_size_xxxl;
+				color: $color_white;
+			}
+
+			&__actions {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				
+				.cog {
+					border-right: 1px solid $color_white;
+					padding: 0 .5rem; 
+					margin-right: 1rem;
+					span {
+						cursor: pointer;
+						font-size: $icon_size_l;
+						padding: 0.2rem .5rem;
+
+						&:hover {
+							color: $color_primary;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.Main {
+		height: 92%;
+		background-color: $color_white;
+		color: $color_white;
+		display: flex;
+
+		.side-menu {
+			background: $color_white;
+			border-right: 1px solid $color_grey;
+			color: $color_black;
+			width: 25%;
+			transition: width 0.20s ease-out;
+
+			button {
+				display: none
+			}
+
+			&--collapsed {
+				width: 87px;
+				button {
+					display: block;
+					position: relative;
+					top: -34px;
+					left: 87px;
+				}
+
+				.side-menu__tabs {
+					a {
+						margin-right: 1.5rem;
+
+						&:hover {
+							padding: .75rem .7rem;
+						}
+					}
+				}
+			}
+
+			&__tabs {
+				border-bottom: 1px solid $color_grey;
+				display: flex;
+				align-items: center;
+				padding: 0 1.5rem;
+
+				a {
+					text-decoration: none;
+					color: $color_secondary;
+					padding: .8rem .7rem;
+					margin-right: .5rem;
+					font-size: $icon_size_xl;
+
+					&:hover {
+						position: relative;
+						padding: 0.7rem;
+						top: 1px;
+						border-bottom: 2px solid $color_primary;
+					}
+				}
+			}
+			.side-menu-list {
+				background: $color-white;
+				max-height: calc(100vh - 121px);
+				overflow-y: auto;
+
+				&.iscollapsed {
+					margin-top: -17px;
+				}
+			}	
+		}
+		.chat-container {
+			background: $color_white;
+			color: $color_black;
+			width: 75%;
+			display: flex;
+			justify-content: space-between;
+			
+
+			&__wrapper{
+				width: 100%;
+				.chat-navbar {
+					padding: 1rem 0;
+					border-bottom: 1px solid $color_grey;
+					height: fit-content;
+					padding: .5rem 1.5rem;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+	
+					&__actions {
+						span {
+							cursor: pointer;
+							margin-left: 1.5rem;
+							color: $color_light_grey;
+							font-size: $icon_size_l;
+	
+							&.active {
+								color: $color_primary;
+							}
+	
+							&:hover {
+								color: $color_primary;
+							}
+						}
+					}
+				}
+			}
+
+			&--collapsed {
+				width: 95%;
+			}
+
+			.chat-info {
+				padding: 1rem 1rem;
+				border-left: 1px solid $color_grey;
+				width: 25%;
+			}
+		}
+	}
+}
