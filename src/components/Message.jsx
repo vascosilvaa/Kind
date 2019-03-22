@@ -14,6 +14,11 @@ const _renderMessageSent = ({ content }) => {
     const [kind, setKind] = useState(Math.random() >= 0.5);
     const [deleted, setDeleted] = useState(false);
 
+    const _handleConfirm = () => {
+        setDeleted(false);
+        setKind(true);
+    }
+
     const _handleDelete = () => {
         setDeleted(true);
         setKind(true);
@@ -23,7 +28,7 @@ const _renderMessageSent = ({ content }) => {
         <div className="bot-wrapper">
             {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--right padding-t-15"><span className="advise-alert">Auch... </span>Why are you being so mean?</div>}
             <div className='message message__sent' >
-                {!kind && <Avatar type={Constants.Avatar.Bot} size={60} alt="bot" />}
+                {(!kind || deleted) && <Avatar type={deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={60} alt="bot" />}
                 <div>
                     <div className={`message__baloon${deleted ? '--sent-deleted' : '--sent'}`}>
                         {deleted ? 'Your message was deleted.' : content}
@@ -34,7 +39,7 @@ const _renderMessageSent = ({ content }) => {
                 <>
                     <div className="bot-sent-advise-top bot-sent-advise-top--right">Sure you want to send it?</div>
                     <div className="bot-buttons bot-buttons--right">
-                        <button>Yes</button>
+                        <button onClick={_handleConfirm}>Yes</button>
                         <button onClick={_handleDelete}>No, delete it</button>
                     </div>
                 </>
@@ -53,6 +58,11 @@ const _renderMessageReceived = ({ content, user }) => {
     const [kind, setKind] = useState(Math.random() >= 0.5);
     const [deleted, setDeleted] = useState(false);
 
+    const _handleConfirm = () => {
+        setDeleted(false);
+        setKind(true);
+    }
+
     const _handleDelete = () => {
         setDeleted(true);
         setKind(true);
@@ -62,7 +72,7 @@ const _renderMessageReceived = ({ content, user }) => {
         <div className="bot-wrapper">
             {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--left padding-t-15">This message contains strong words.</div>}
             <div className='message message__received'>
-                <Avatar type={kind ? Constants.Avatar.Rounded : Constants.Avatar.Bot} size={kind ? 40 : 60} alt="test" src={user.photo} />
+                <Avatar type={(kind && !deleted) ? Constants.Avatar.Rounded : deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={kind ? 40 : 60} alt="test" src={user.photo} />
                 <div className={`message__baloon${deleted ? '--received-deleted blur' : '--received'} ${kind ? '' : 'blur'}`}>
                     {content}
                 </div>
@@ -71,7 +81,7 @@ const _renderMessageReceived = ({ content, user }) => {
                 <>
                     <div className="bot-sent-advise-top bot-sent-advise-top--left">Sure you want to see it?</div>
                     <div className="bot-buttons bot-buttons--left">
-                        <button>Yes</button>
+                        <button onClick={_handleConfirm}>Yes</button>
                         <button onClick={_handleDelete}>No, delete it</button>
                     </div>
                 </>

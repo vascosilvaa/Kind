@@ -4,7 +4,8 @@ const Constants = {
 	},
 	Avatar: {
 		Rounded: 'rounded',
-		Bot: 'bot'
+		BotHappy: 'bot-happy',
+		BotSad: 'bot-sad'
 	},
 	Person: {
 		WithAvatar: 'with-avatar-rounded',
