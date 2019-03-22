@@ -8,9 +8,9 @@ const ChatInput = ({ id_room, id_user }) => {
     return (
         <Mutation mutation={ADD_MESSAGE}>
             {(newMessage, { data }) => (
-                <div className="chat-input">
+                <div className="chat-input" onKeyDown={e => { e.keyCode === 13 && _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e)) }}>
                     <input placeholder="Write your message..." value={content} onChange={e => setContent(e.target.value)} />
-                    <button onClick={() => _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e))}><span className="fa fa-paper-plane" /></button>
+                    <button type="submit" onClick={() => _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e))}><span className="fa fa-paper-plane" /></button>
                 </div>
             )}
 
