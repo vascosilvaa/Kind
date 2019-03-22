@@ -45,6 +45,19 @@
 		
 		
 	}
+	&__menu-list {
+		color: $color_black;
+		display: flex;
+		align-items: center;
+		padding: 1rem 1.5rem;
+		.person-section {
+			margin-left: 15px;
+			font-weight: $font_weight_bold;
+		}
+		&:hover {
+			background: $color_grey;
+		}
+	}
 
 	.person__state {
 		&--active {

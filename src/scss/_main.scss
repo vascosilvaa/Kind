@@ -22,3 +22,30 @@
 .pointer {
 	cursor: pointer;
 }
+
+.loader {
+	span {
+		width: 100%;
+		color: $color_secondary;
+		font-size: $icon_size_l;
+	}
+}
+
+.search-input {
+	margin: .5rem 1.5rem;
+	input {
+		font-size: $font_size_s;
+		background: $color_grey;
+		font-weight: $font_weight_light;
+		color: $color_black;
+		border-radius: 10px;
+		border: 0;
+		padding: 0.5rem 1rem;
+		width: -webkit-fill-available;
+		outline: none;
+		::placeholder {
+			color: $color_grey;
+		}
+	}
+	
+}

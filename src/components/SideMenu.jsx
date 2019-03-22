@@ -1,22 +1,48 @@
-import React from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Constants from '../configs/constants';
 import SideMenuTabs from './SideMenuTabs';
-import SideMenuList from './SideMenuList';
 import Button from './Button';
+import Loader from './Loader';
 
-const SideMenu = props => (
-	<div className={`side-menu ${props.isCollapsed ? 'side-menu--collapsed' : ''}`}>
-		<SideMenuTabs {...props} />
-		<Button type={Constants.Button.Collapse} onClick={() => props.handleCollapse(!props.isCollapsed)} />
-		<Switch>
-			<Route exact path='/' component={() => <div>conversas</div>} />
-			{/* <Route path='/chat/contexts' component={() => <div>groups/communities</div>} />
-			<Route path='/chat/persons' component={() => <div>persons</div>} />
-			<Route path='/chat/search' component={() => <div>search</div>} /> */}
-		</Switch>
-		<SideMenuList isCollapsed={props.isCollapsed} />
-	</div>
-)
+const SideMenuList = React.lazy(() => import('./SideMenuList'));
+
+const SideMenu = props => {
+	return (
+		<div className={`side-menu ${props.isCollapsed ? 'side-menu--collapsed' : ''}`}>
+			<SideMenuTabs {...props} param={props.params} />
+			<Button type={Constants.Button.Collapse} onClick={() => props.handleCollapse(!props.isCollapsed)} />
+			<Switch>
+				<Route exact path='/chat/conversations/:id' component={() => (
+					<Suspense fallback={< Loader />}>
+						<SideMenuList isCollapsed={props.isCollapsed} type={Constants.Menu.Conversations} setParams={props.setParam} />
+					</Suspense >
+				)} />
+				<Route path='/chat/contexts/:id' component={() => (
+					<Suspense fallback={< Loader />}>
+						<SideMenuList isCollapsed={props.isCollapsed} type={Constants.Menu.Contexts} setParams={props.setParam} />
+					</Suspense >
+				)} />
+				<Route path='/chat/persons/:id' component={() => (
+					<Suspense fallback={< Loader />}>
+						<SideMenuList isCollapsed={props.isCollapsed} type={Constants.Menu.Persons} setParams={props.setParam} />
+					</Suspense >
+				)} />
+				<Route path='/chat/search/:id' component={() => (
+					<Suspense fallback={< Loader />}>
+						<SideMenuList isCollapsed={props.isCollapsed} type={Constants.Menu.Search} setParams={props.setParam} />
+					</Suspense >
+				)} />
+				<Route path='/chat/*/:id' component={() => (
+					<Suspense fallback={< Loader />}>
+						<SideMenuList isCollapsed={props.isCollapsed} type={Constants.Menu.Conversations} setParams={props.setParam} />
+					</Suspense >
+				)} />
+
+			</Switch>
+		</div>
+	)
+}
+
 
 export default SideMenu;

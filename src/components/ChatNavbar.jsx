@@ -3,14 +3,14 @@ import React from 'react';
 import Constants from '../configs/constants';
 import Person from './Person';
 
-const ChatNavbar = ({ isCollapsed, handleCollapse }) => (
+const ChatNavbar = ({ isCollapsed, handleCollapse, user }) => (
 	<div className='chat-navbar'>
 		<Person
-			name="Miguel Antunes"
+			name={user.name}
 			type={Constants.Person.WithAvatar}
-			src="http://i.pravatar.cc/35"
+			src={user.photo}
 			size={33}
-			alt="example"
+			alt={user.name}
 		/>
 		<div className='chat-navbar__actions'>
 			{/* <span className='fa fa-search' /> */}

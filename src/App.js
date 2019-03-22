@@ -1,68 +1,77 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { ApolloClient } from 'apollo-client';
-// import { InMemoryCache } from 'apollo-cache-inmemory';
-// import { HttpLink } from 'apollo-link-http';
-// import { withClientState } from 'apollo-link-state';
-// import { ApolloLink, split } from 'apollo-link';
-// import { WebSocketLink } from 'apollo-link-ws';
-// import { getMainDefinition } from 'apollo-utilities';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { withClientState } from 'apollo-link-state';
+import { ApolloLink, split } from 'apollo-link';
+import { WebSocketLink } from 'apollo-link-ws';
+import { getMainDefinition } from 'apollo-utilities';
+import { ApolloProvider, ApolloConsumer, Query } from 'react-apollo';
 import './scss/_main.scss';
 import Main from './screens/Main';
 import Topbar from './components/Topbar'
-
-// const cache = new InMemoryCache();
-
-// const httpLink = new HttpLink({
-// 	uri: `http://localhost:4000`
-// })
-
-// const wsLink = new WebSocketLink({
-// 	uri: `ws://127.0.0.1:4000/graphql`,
-// 	options: {
-// 		reconnect: true
-// 	}
-// })
-
-// const link = split(
-// 	({ query }) => {
-// 		const { kind, operation } = getMainDefinition(query);
-// 		return kind === 'OperationDefinition' && operation === 'subscription';
-// 	},
-// 	wsLink,
-// 	httpLink
-// )
+import Loader from './components/Loader'
+import { GET_PERSON } from './graphql/queries/persons';
 
 
-// const client = ApolloClient({
-// 	link: ApolloLink.from([
-// 		withClientState({
-// 			defaults: {
-// 				personLoggedId: null,
-// 				platform: 'campus'
-// 			},
-// 			cache
-// 		}),
-// 		link
-// 	]),
-// 	cache
-// });
+const cache = new InMemoryCache();
+
+const httpLink = new HttpLink({
+	uri: `https://api.graph.cool/simple/v1/cjtjemw3i1iy70158kr25sqw6`
+})
+
+const wsLink = new WebSocketLink({
+	uri: `wss://subscriptions.graph.cool/v1/cjtjemw3i1iy70158kr25sqw6`,
+	options: {
+		reconnect: true
+	}
+})
+
+const link = split(
+	({ query }) => {
+		const { kind, operation } = getMainDefinition(query);
+		return kind === 'OperationDefinition' && operation === 'subscription';
+	},
+	wsLink,
+	httpLink
+)
+
+
+const client = new ApolloClient({
+	link: ApolloLink.from([
+		withClientState({
+			cache
+		}),
+		link
+	]),
+	cache
+});
 
 
 
 const App = () => (
-	// <ApolloProvider>
-	<Router>
-		<div className="Chat">
-			<Topbar />
-			<Switch>
-				<Route exact path='/' component={Main} />
-				<Route path='/chat' component={Main} />
-			</Switch>
-		</div>
-	</Router>
-	// </ApolloProvider>
+	<ApolloProvider client={client}>
+		<Query query={GET_PERSON} variables={{ id: 'cjtjf7f8g0q790141ugksvlw3' }}>
+
+			{({ loading, error, data, client }) => {
+				if (loading) return <Loader />;
+				if (error) return `Error! ${error.message}`;
+				client.writeData({ data: { user_logged: data.User } })
+				return (
+					<Router>
+						<div className="Chat">
+							<Topbar />
+							<Switch>
+								<Route exact path='/' component={Main} />
+								<Route path='/chat' component={Main} />
+							</Switch>
+						</div>
+					</Router>
+				)
+			}}
+		</Query>
+	</ApolloProvider>
 );
 
 export default App;

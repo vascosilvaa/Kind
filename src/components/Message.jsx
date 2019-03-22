@@ -5,28 +5,30 @@ import Avatar from './Avatar';
 const Message = props => {
     switch (props.type) {
         default:
-        case Constants.Message.sent: return _renderMessageSent();
-        case Constants.Message.received: return _renderMessageReceived();
-        case Constants.Message.bot: return _renderMessageBot();
+        case Constants.Message.sent: return _renderMessageSent(props);
+        case Constants.Message.received: return _renderMessageReceived(props);
+        case Constants.Message.bot: return _renderMessageBot(props);
     }
 }
 
-const _renderMessageSent = () => (
-    <div className="message message__sent">
-        <div className="message__baloon--sent">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet maximus dapibus. Donec ultricies tempus tellus, egestas vulputate lectus finibus iaculis.
+const _renderMessageSent = ({ content }) => {
+    return (
+        <div className="message message__sent" >
+            <div className="message__baloon--sent">
+                {content}
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
 
 
 
-const _renderMessageReceived = () => (
+const _renderMessageReceived = ({ content, user }) => (
     <div className="message message__received">
-        <Avatar type={Constants.Avatar.Rounded} size={40} alt="test" src='http://i.pravatar.cc/35' />
+        <Avatar type={Constants.Avatar.Rounded} size={40} alt="test" src={user.photo} />
         <div className="message__baloon--received">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet maximus dapibus. Donec ultricies tempus tellus, egestas vulputate lectus finibus iaculis.
+            {content}
         </div>
     </div>
 )
@@ -34,7 +36,7 @@ const _renderMessageReceived = () => (
 const _renderMessageBot = () => (
     <div className="message message__bot">
         <strong>Kind: </strong> <span> Be careful with your words. </span>
-   </div>
+    </div>
 )
 
 

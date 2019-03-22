@@ -1,56 +1,124 @@
 import React from 'react';
+import { Query } from "react-apollo";
+import { withRouter } from 'react-router-dom';
 import ChatRoom from './ChatRoom';
+import Constants from '../configs/constants';
+import Person from './Person';
+import Loader from './Loader';
+import { GET_PERSONS } from '../graphql/queries/persons';
+import { GET_CHATS_BY_PERSON } from '../graphql/queries/chat';
 
 const SideMenuList = props => {
-    return (
-        <div className={`side-menu-list ${props.isCollapsed ? 'iscollapsed' : ''}`}>
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-            <ChatRoom isCollapsed={props.isCollapsed} />
-
-        </div>
-    )
+    props.setParams(props.match.params.id);
+    switch (props.type) {
+        default:
+        case (Constants.Menu.Conversations): return _renderConversationsMenu(props);
+        case (Constants.Menu.Persons): return _renderPersonsMenu(props);
+        case (Constants.Menu.Contexts): return _renderContextsMenu(props);
+        case (Constants.Menu.Search): return _renderSearchMenu(props);
+    }
 }
 
-export default SideMenuList;
+const _renderContextsMenu = props => (
+    <div className={`side-menu-list ${props.isCollapsed ? 'iscollapsed' : ''}`}>
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+        <ChatRoom isCollapsed={props.isCollapsed} />
+    </div>
+);
+
+const _renderPersonsMenu = props => (
+    <div className={`side-menu-list ${props.isCollapsed ? 'iscollapsed' : ''}`} o>
+        <Query query={GET_PERSONS} variables={{ id: 'cjtjf7f8g0q790141ugksvlw3' }}>
+            {({ loading, error, data }) => {
+                if (loading) return <Loader />;
+                if (error) return `Error! ${error.message}`;
+                return (
+                    data.allUsers.map(user => (
+                        <Person
+                            id={user.id}
+                            key={user.id}
+                            name={user.name}
+                            type={Constants.Person.MenuList}
+                            hideContent={props.isCollapsed}
+                            src={user.photo}
+                            size={40}
+                            alt={user.name}
+                            rooms={user.rooms}
+                        />
+                    ))
+
+                );
+            }}
+        </Query>
+    </div>
+);
+
+const _renderConversationsMenu = props => (
+    <div className={`side-menu-list ${props.isCollapsed ? 'iscollapsed' : ''}`}>
+
+        <Query query={GET_CHATS_BY_PERSON} variables={{ id: 'cjtjf7f8g0q790141ugksvlw3' }}>
+            {({ loading, error, data }) => {
+                if (loading) return <Loader />;
+                if (error) return `Error! ${error.message}`;
+                return (
+                    data.allRooms.map(room => (
+                        <ChatRoom key={room.id} isCollapsed={props.isCollapsed} room={room} />
+                    ))
+                );
+            }}
+        </Query>
+    </div>
+);
+
+const _renderSearchMenu = props => (
+    <div className={`side-menu-list ${props.isCollapsed ? 'iscollapsed' : ''}`}>
+        <div className="search-input">
+            <input placeholder="Search..." />
+        </div>
+
+    </div>
+);
+
+export default withRouter(SideMenuList);

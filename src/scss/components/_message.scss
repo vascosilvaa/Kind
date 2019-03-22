@@ -18,6 +18,8 @@
         color: $color_white;
         max-width: 70%;
         margin-right: 1rem;
+        width: 100%;
+        margin-right: 1rem;
     }
 
     &__bot {
@@ -32,6 +34,7 @@
     }
 
     &__baloon {
+
         &--received {
             background: $color_grey;
             color: $color_secondary;
@@ -46,6 +49,8 @@
             margin-left: 10px;
             margin-top: .5rem;
             padding: 1rem 0.8rem;
+            position: relative;
+            margin-left: auto;
         }
     }
 }

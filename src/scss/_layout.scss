@@ -50,7 +50,7 @@ body {
 	}
 
 	.Main {
-		height: 92%;
+		height: 90%;
 		background-color: $color_white;
 		color: $color_white;
 		display: flex;
@@ -109,7 +109,7 @@ body {
 			}
 			.side-menu-list {
 				background: $color-white;
-				max-height: calc(100vh - 121px);
+				max-height: calc(100vh - 140px);
 				overflow-y: auto;
 
 				&.iscollapsed {

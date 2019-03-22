@@ -1,6 +1,6 @@
 .chat-panel {
 	display: flex;
-	height: calc(100vh - 125px);
+	height: calc(100vh - 144px);
 	justify-content: space-between;
 	flex-direction: column;
 
@@ -33,6 +33,11 @@
 			padding: .7rem;
 			border-radius: 50%;
 			font-size: $icon_size_l;
+			outline: none;
+
+			:active {
+				opacity: 0.4;
+			}
 		}
 	}
 }
@@ -53,7 +58,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			max-width: 80%;
+			max-width: 100%;
 
 			.title {
 				font-size: $font_size_m;

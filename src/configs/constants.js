@@ -7,7 +7,8 @@ const Constants = {
 	},
 	Person: {
 		WithAvatar: 'with-avatar-rounded',
-		WithAvatarAndState: 'with-avatar-and-state'
+		WithAvatarAndState: 'with-avatar-and-state',
+		MenuList: 'menu-list'
 	},
 	Size: {
 		xsmall: 'xs',
@@ -20,8 +21,13 @@ const Constants = {
 		sent: 'sent',
 		received: 'received',
 		bot: 'bot',
+	},
+	Menu: {
+		Conversations: 'conversations',
+		Contexts: 'contexts',
+		Persons: 'persons',
+		Search: 'search'
 	}
-
 }
 
 export default Constants;

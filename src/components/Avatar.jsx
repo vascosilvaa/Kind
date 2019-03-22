@@ -12,7 +12,7 @@ const _renderRoundedAvatar = ({ size, src, alt }) => (
 	<img
 		style={{ minWidth: `${size}px`, minHeight: `${size}px` }}
 		className="avatar avatar__rounded"
-		src={src}
+		src={src || 'https://discovery-park.co.uk/wp-content/uploads/2017/06/avatar-default.png'}
 		height={size}
 		width={size}
 		alt={alt}
