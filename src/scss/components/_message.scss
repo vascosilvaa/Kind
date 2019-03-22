@@ -1,6 +1,19 @@
 .message { 
     display: flex;
     align-items: center;
+
+    .kind {
+        padding: .5rem;
+        color: $color_black;
+    }
+
+    .blur {
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
     
     &__received {
         align-self: flex-start;
@@ -10,48 +23,82 @@
         margin-left: 1rem;
         width: 100%;
     }
+
     &__sent {
-        float: right;
-        align-self: flex-end;
         border-radius: 10px;
-        width: fit-content;
-        padding: 0.5rem 0.8rem;
+        padding: 0.2rem 0.8rem;
         color: $color_white;
-        max-width: 70%;
-        margin-right: 1rem;
-        width: 100%;
-        margin-right: 1rem;
+        margin-right: 0.7rem;
+        justify-content: flex-end;
     }
 
     &__bot {
-        border-top: 1px solid $color_grey;
-        border-bottom: 1px solid $color_grey;
-        padding: 1rem;
-        margin: 1rem;
-        color: $color_secondary;
-        font-weight: $font_weight_bold;
-        justify-content: center;
+        align-self: flex-start;
+        width: fit-content;
+        color: $color_white;
+        max-width: 70%;
+        margin-left: 1rem;
         width: 100%;
     }
 
     &__baloon {
-
         &--received {
-            background: $color_grey;
+            background: $color_white;
             color: $color_secondary;
             border-radius: 10px;
             padding: 1rem 0.8rem;
             margin-top: .5rem;
             margin-left: 10px;
         }
-        &--sent {
+        &--sent {        
             border-radius: 10px;
             background: $color_primary;
             margin-left: 10px;
             margin-top: .5rem;
             padding: 1rem 0.8rem;
             position: relative;
-            margin-left: auto;
         }
+
+        &--sent-deleted {        
+            border-radius: 10px;
+            color: $color_light_grey;
+            background: $color_grey;
+            margin-left: 10px;
+            margin-top: .5rem;
+            padding: 1rem 0.8rem;
+            position: relative;
+            font-size: $font_size_xs;
+        }
+
+        &--received-deleted {        
+            color: $color_light_grey;
+            background: $color_grey;
+            border-radius: 10px;
+            padding: 1rem 0.8rem;
+            margin-top: .5rem;
+            margin-left: 10px;
+            font-size: $font_size_xs;
+
+        }
+
+        &--bot {
+            background: $color_white;
+            border: 1px solid  $color_grey;
+            color: $color_secondary;
+            border-radius: 10px;
+            padding: 1rem 0.8rem;
+            margin-top: .5rem;
+            margin-left: 10px;
+        }
+    }
+}
+
+.kind-msg {
+    color: $color_secondary;
+    font-size: $font_size_xs;
+    margin: .3rem 0;
+
+    &--left {
+        margin-left: 1rem;
     }
 }

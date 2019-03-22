@@ -3,6 +3,7 @@
 	height: calc(100vh - 144px);
 	justify-content: space-between;
 	flex-direction: column;
+	height: calc(100vh - 142px);
 
 	.chat-section {
 		overflow-y: auto;
@@ -15,7 +16,10 @@
 		display: flex;
 		align-items: center;
 		border-top: 1px solid $color_grey; 
-		padding: 5px 10px;
+		padding: 5px 1.5rem 5px 10px;
+		background: $color_white;
+		box-shadow: 3px -1px 12px rgba(50, 50, 50, .2);
+
 		input {
 			border: 0;
 			padding: 25px 20px;
@@ -23,13 +27,14 @@
 			outline: none;
 			font-size: $font_size_m;
 			color: $color_black;
-
+			background: $color_white;
+			
 			::placeholder {
 				color: $color_grey;
 			}
 		}
 		button {
-			background: $color_primary;
+			background: $color_fab;
 			color: $color_white;
 			padding: .7rem;
 			border-radius: 50%;
@@ -48,6 +53,7 @@
 	padding: 1rem 1.5rem;
 	align-items: center;
 	cursor: pointer;
+
 	&:hover {
 		background: $color_grey;
 	}

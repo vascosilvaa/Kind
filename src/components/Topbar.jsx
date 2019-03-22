@@ -13,7 +13,7 @@ const Topbar = () => (
 			return (
 				<div className='Topbar'>
 					<div className='topbar topbar__title'>
-						Kind
+						<div className="img-topbar"></div>
 					</div>
 					<div className='topbar topbar__actions'>
 						<div className='cog'>

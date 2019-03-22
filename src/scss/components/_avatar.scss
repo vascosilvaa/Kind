@@ -3,4 +3,8 @@
 		object-fit: cover;
 		border-radius: 50%;
 	}
+
+	&__bot {
+		object-fit: contain;
+	}
 }

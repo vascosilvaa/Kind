@@ -19,11 +19,19 @@
 	margin-right: 0!important;
 }
 
+.padding-t-15 {
+	padding-top: 1.5rem;
+}
+
 .pointer {
 	cursor: pointer;
 }
 
 .loader {
+	width: 100%;
+	text-align: center;
+	padding: 0.5rem;
+	background: white;
 	span {
 		width: 100%;
 		color: $color_secondary;
@@ -48,4 +56,8 @@
 		}
 	}
 	
+}
+
+button {
+	outline: none;
 }

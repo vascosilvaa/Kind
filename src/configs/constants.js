@@ -3,7 +3,8 @@ const Constants = {
 		Collapse: 'collapse'
 	},
 	Avatar: {
-		Rounded: 'rounded'
+		Rounded: 'rounded',
+		Bot: 'bot'
 	},
 	Person: {
 		WithAvatar: 'with-avatar-rounded',

@@ -6,14 +6,14 @@ body {
 	background: #e7e7e7
 }
 .Chat {
-	max-width: 1200px;
-	min-width: 320px;
+	// max-width: 1200px;
+	// min-width: 320px;
 	margin: 0 auto;
 	height: 100vh;
 
 	.Topbar {
 		height: 90px;
-		background-color: $color_secondary;
+		background-color: #090623;
 		color: $color_white;
 		display: flex;
 		align-items: center;
@@ -24,6 +24,13 @@ body {
 				margin-right: auto;
 				font-size: $font_size_xxxl;
 				color: $color_white;
+
+				.img-topbar {
+					height: 100px;
+					width: 100px;
+					background: url('../assets/imgs/kind.png');
+					background-size: contain;
+				} 
 			}
 
 			&__actions {
@@ -54,6 +61,7 @@ body {
 		background-color: $color_white;
 		color: $color_white;
 		display: flex;
+		max-height: calc(100vh - 92px);
 
 		.side-menu {
 			background: $color_white;
@@ -118,15 +126,15 @@ body {
 			}	
 		}
 		.chat-container {
-			background: $color_white;
 			color: $color_black;
 			width: 75%;
 			display: flex;
 			justify-content: space-between;
-			
+			background: #f1f1f1;
 
 			&__wrapper{
 				width: 100%;
+				
 				.chat-navbar {
 					padding: 1rem 0;
 					border-bottom: 1px solid $color_grey;
@@ -135,6 +143,7 @@ body {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					background: $color-white;
 	
 					&__actions {
 						span {
@@ -166,4 +175,55 @@ body {
 			}
 		}
 	}
+}
+.bot-wrapper {
+	.bot-buttons {
+		margin-bottom: 1rem;
+		margin-left: 5.5rem;
+
+		&--right {
+			text-align: right;
+			margin-right: 1.5rem;
+		}
+
+		&--left {
+			text-align: left;
+			margin-left: 1.5rem;
+		}
+
+		button {
+			margin-top: .5rem;
+			background: $color_white;
+			color: $color_black;
+			border:0;
+			border-radius: 6px;
+			padding: .3rem .8rem;
+			margin-right: .5rem;
+			cursor: pointer;
+			
+			&:hover {
+				background: $color_grey;
+			}
+		}	
+	}
+}
+
+.bot-sent-advise-top {
+	font-size: $font_size_xs;
+    margin-top: .2rem;
+	&--right {
+		text-align: right;
+		margin-right: 1.5rem;
+	}
+
+	&--left {
+		text-align: left;
+		margin-left: 1.5rem;
+	}
+
+	.advise-alert{
+		color: $color_state_busy;
+		font-weight: $font_weight_bold;
+	}
+	color: $color_secondary;
 }

@@ -14,7 +14,7 @@ const ChatNavbar = ({ isCollapsed, handleCollapse, user }) => (
 		/>
 		<div className='chat-navbar__actions'>
 			{/* <span className='fa fa-search' /> */}
-			<span className={`fa fa-info-circle ${isCollapsed ? 'active' : ''}`} onClick={() => handleCollapse(!isCollapsed)} />
+			<span className={`fa fa-angle-left ${isCollapsed ? 'active' : ''}`} onClick={() => handleCollapse(!isCollapsed)} />
 			{/* <span className='fa fa-ellipsis-v' /> */}
 		</div>
 
