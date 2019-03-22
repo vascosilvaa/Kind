@@ -7,9 +7,17 @@ import { GET_MESSAGES_BY_ROOM } from '../graphql/queries/chat';
 import Loader from './Loader';
 
 class ChatSection extends React.PureComponent {
+
 	componentDidMount() {
 		this.props.subscribeToMore();
+
+		this.messagesEnd.scrollIntoView({ behavior: "smooth" });
 	}
+
+	componentDidUpdate() {
+		this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+	}
+
 	render() {
 		const { messages } = this.props;
 
@@ -25,6 +33,7 @@ class ChatSection extends React.PureComponent {
 								? messages.map(message => <Message type={message.user.id === data.user_logged.id ? Constants.Message.sent : Constants.Message.received} {...message} />)
 								: <div>No messages yet.</div>
 							}
+							<div ref={el => { this.messagesEnd = el }}></div>
 						</div>
 					)
 				}}

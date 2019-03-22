@@ -12,9 +12,9 @@ const NEW_MESSAGE = gql`
                 id
                 content
                 score
+                createdAt
                 user {
                     id
-                    name
                     photo
                 }
             }
