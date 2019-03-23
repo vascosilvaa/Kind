@@ -45,7 +45,7 @@ const _renderPersonMenuList = ({ id, alt, src, size, name, state, hideContent, h
 	<Query query={GET_PERSON_CLIENT}>
 		{({ loading, error, data: dataLogged, client }) => {
 			if (loading) return <Loader />;
-			if (error) return `Error! ${error.message}`;
+			if (error) return <Loader />
 			return (
 				<Mutation mutation={ADD_CHAT}>
 					{(newChat, { data }) => (

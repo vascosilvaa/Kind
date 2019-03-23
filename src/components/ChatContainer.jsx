@@ -17,17 +17,17 @@ const ChatContainer = props => {
 			<Query query={GET_PERSON_CLIENT}>
 				{({ loading, error, data, client }) => {
 					if (loading) return <Loader />;
-					if (error) return `Error! ${error.message}`;
+					if (error) return <Loader />
 					return (
 						<Query query={GET_CHAT_BY_ID} variables={{ id: props.params, id_user: data.user_logged.id }}>
 							{({ loading, error, data: dataChat }) => {
 								if (loading) return <Loader />;
-								if (error) return `Error! ${error.message}`;
+								if (error) return <Loader />
 								return (
 									<Query query={GET_MESSAGES_BY_ROOM} variables={{ id: dataChat.Room.id }}>
 										{({ loading, error, data: dataMessages, subscribeToMore }) => {
 											if (loading) return <Loader />;
-											if (error) return `Error! ${error.message}`;
+											if (error) return <Loader />
 
 											const more = () => subscribeToMore({
 												document: NEW_MESSAGE,

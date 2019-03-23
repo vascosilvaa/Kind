@@ -11,7 +11,7 @@ const Topbar = ({ userLogged }) => {
 		<Query query={GET_PERSON_CLIENT}>
 			{({ loading, error, data, client }) => {
 				if (loading) return <Loader />;
-				if (error) return `Error! ${error.message}`;
+				if (error) return <Loader />
 				return (
 					<div className='Topbar'>
 						<div className='topbar topbar__title'>
