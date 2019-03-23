@@ -27,8 +27,8 @@ const _handleCreateMessage = async (content, newMessage, id_room, id_user, setCo
             query: GET_SCORE,
             variables: { message: content }
         });
-        await newMessage({ variables: { userId: id_user, roomId: id_room, content: content, score: sentiment.data.score.sentiment } });
-        setContent('');
+        const newMsg = await newMessage({ variables: { userId: id_user, roomId: id_room, content: content, score: sentiment.data.score.sentiment } });
+        if (newMsg) setContent('');
     } else {
         return undefined;
     }
