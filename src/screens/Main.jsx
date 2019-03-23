@@ -5,7 +5,8 @@ import ChatContainer from '../components/ChatContainer';
 const Main = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const [params, setParams] = useState(null);
-	const [mobile, setMobile] = useState(window.innerWidth > 650 ? false : true)
+	const [mobile, setMobile] = useState(window.innerWidth > 1000 ? false : true)
+	
 	useEffect(() => {
 		const handler = () => {
 			setMobile(window.innerWidth > 1000 ? false : true);
