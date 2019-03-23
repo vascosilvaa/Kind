@@ -240,8 +240,8 @@ body {
 		top: -20px;
 		width: 35px;
 		height: 35px;
-		
 		cursor: pointer;
+		
 		&--red {
 			left: -55px;
 			background: url('../assets/imgs/kind_talk_red.png');
@@ -261,4 +261,11 @@ body {
 			background-repeat: repeat;
 		}	
 	}
+}
+
+.no-messages {
+	font-size: $font_size_m;
+	color: $color_black;
+	font-weight: $font_weight_normal;
+	padding: .5rem 1.5rem;;
 }

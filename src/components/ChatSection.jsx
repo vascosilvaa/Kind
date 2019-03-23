@@ -30,7 +30,7 @@ class ChatSection extends React.PureComponent {
 						<div className={`chat-section`}>
 							{messages.length > 0
 								? messages.map(message => <Message type={message.user.id === data.user_logged.id ? Constants.Message.sent : Constants.Message.received} {...message} />)
-								: <div>No messages yet.</div>
+								: <div className="no-messages">No messages yet on this room.</div>
 							}
 							<div ref={el => { this.messagesEnd = el }}></div>
 						</div>
