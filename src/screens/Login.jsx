@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Login = ({ userLogged, setUserLogged }) => (
     <div className="Login-page">
-        <Link className="card" to={'/chat/conversations/cjtktzui30k6l0106tikpswo8'} onClick={() => setUserLogged('cjtjfgpq90riq0104flsd68n8')}>
+        <Link className="card" to={'/chat/conversations/cjtjfsfpl0svk0195v3d10iw8'} onClick={() => setUserLogged('cjtjfgpq90riq0104flsd68n8')}>
             Henrique Silva
         </Link>
-        <Link className="card" to={'/chat/conversations/cjtktzui30k6l0106tikpswo8'} onClick={() => setUserLogged('cjtjf7f8g0q790141ugksvlw3')}>
+        <Link className="card" to={'/chat/conversations/cjtjfsfpl0svk0195v3d10iw8'} onClick={() => setUserLogged('cjtjf7f8g0q790141ugksvlw3')}>
             Vasco Silva
         </Link>
     </div>
