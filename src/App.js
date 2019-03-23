@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -10,9 +10,11 @@ import { getMainDefinition } from 'apollo-utilities'
 import { ApolloProvider, Query } from 'react-apollo'
 import './scss/_main.scss'
 import Main from './screens/Main'
+import Login from './screens/Login'
 import Topbar from './components/Topbar'
 import Loader from './components/Loader'
 import { GET_PERSON } from './graphql/queries/persons'
+import NoMatch from './screens/NoMatch';
 
 const cache = new InMemoryCache()
 
@@ -46,27 +48,38 @@ const client = new ApolloClient({
   cache
 })
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <Query query={GET_PERSON} variables={{ id: 'cjtjhl8f801tq01106qrg183i' }}>
-      {({ loading, error, data, client }) => {
-        if (loading) return <Loader />
-        if (error) return `Error! ${error.message}`
-        client.writeData({ data: { user_logged: data.User } })
-        return (
-          <Router>
-            <div className="Chat">
-              <Topbar />
-              <Switch>
-                <Route exact path="/" component={Main} />
-                <Route path="/chat" component={Main} />
-              </Switch>
-            </div>
-          </Router>
-        )
-      }}
-    </Query>
-  </ApolloProvider>
-)
+const App = () => {
+  const [userLogged, setUserLogged] = useState(null);
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="Chat">
+
+          {!userLogged && <Login userLogged={userLogged} setUserLogged={setUserLogged} />}
+
+          {userLogged &&
+            (
+              <Query query={GET_PERSON} variables={{ id: userLogged }}>
+                {({ loading, error, data, client }) => {
+                  if (loading) return <Loader />
+                  if (error) return `Error! ${error.message}`
+                  client.writeData({ data: { user_logged: data.User } })
+                  return (
+                    <>
+                      <Topbar userLogged={userLogged} setUserLogged={setUserLogged} />
+                      <Switch>
+                        <Route path="/chat" component={Main} />
+                        <Route component={NoMatch} />
+                      </Switch>
+                    </>
+                  )
+                }}
+              </Query>
+            )}
+        </div>
+      </Router>
+    </ApolloProvider>
+  )
+}
 
 export default App

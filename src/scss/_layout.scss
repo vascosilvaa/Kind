@@ -5,6 +5,26 @@ body {
 	font-weight: $font_weight_normal;
 	background: #e7e7e7
 }
+
+.Login-page {
+	height: 100vh;
+	width: 100vw;
+	background: #090623;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.card {
+		background: white;
+		height: 400px;
+		width: 200px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1rem;
+	}
+}
+
 .Chat {
 	// max-width: 1200px;
 	// min-width: 320px;
