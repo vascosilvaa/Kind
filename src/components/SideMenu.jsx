@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Constants from '../configs/constants';
 import SideMenuTabs from './SideMenuTabs';
