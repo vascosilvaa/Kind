@@ -3,7 +3,7 @@ import SideMenu from '../components/SideMenu';
 import ChatContainer from '../components/ChatContainer';
 
 const Main = () => {
-	const [collapsed, setCollapsed] = useState(false);
+	const [collapsed, setCollapsed] = useState(window.innerWidth < 1000);
 	const [params, setParams] = useState(null);
 	const [mobile, setMobile] = useState(window.innerWidth > 1000 ? false : true)
 	
