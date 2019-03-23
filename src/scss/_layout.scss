@@ -228,3 +228,15 @@ body {
 	}
 	color: $color_secondary;
 }
+
+.bot-feedback {
+	position: relative;
+    top: -20px;
+	left: -30px;
+	width: 40px;
+	height: 40px;
+	background: url('../assets/imgs/kind_talk.png');
+	background-size: cover;
+	background-repeat: repeat;
+	cursor: pointer;
+}

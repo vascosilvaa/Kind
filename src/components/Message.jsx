@@ -26,7 +26,7 @@ const _renderMessageSent = ({ content }) => {
 
     return (
         <div className="bot-wrapper">
-            {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--right padding-t-15"><span className="advise-alert">Auch... </span>Why are you being so mean?</div>}
+            {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--right padding-t-15"><span className="advise-alert">Auch... </span>Could you please try to be kinder?</div>}
             <div className='message message__sent' >
                 {(!kind || deleted) && <Avatar type={deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={60} alt="bot" />}
                 <div>
@@ -57,7 +57,7 @@ const _renderMessageSent = ({ content }) => {
 const _renderMessageReceived = ({ content, user }) => {
     const [kind, setKind] = useState(Math.random() >= 0.5);
     const [deleted, setDeleted] = useState(false);
-
+    const [hover, setHover] = useState(false);
     const _handleConfirm = () => {
         setDeleted(false);
         setKind(true);
@@ -71,11 +71,12 @@ const _renderMessageReceived = ({ content, user }) => {
     return (
         <div className="bot-wrapper">
             {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--left padding-t-15">This message contains strong words.</div>}
-            <div className='message message__received'>
+            <div className='message message__received' onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <Avatar type={(kind && !deleted) ? Constants.Avatar.Rounded : deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={kind ? 40 : 60} alt="test" src={user.photo} />
-                <div className={`message__baloon${deleted ? '--received-deleted blur' : '--received'} ${kind ? '' : 'blur'}`}>
+                <div className={`message__baloon${deleted ? '--received-deleted blur' : '--received'} ${kind ? '' : 'blur'}`} >
                     {content}
                 </div>
+                {hover && kind && _renderBotFeedback()}
             </div>
             {!kind && (
                 <>
@@ -94,5 +95,10 @@ const _renderMessageReceived = ({ content, user }) => {
         </div>
     )
 }
+
+const _renderBotFeedback = () => (
+    <div className="bot-feedback" />
+)
+
 
 export default Message;

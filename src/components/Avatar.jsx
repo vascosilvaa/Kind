@@ -35,8 +35,4 @@ const _renderBotAvatar = ({ size, alt, type }) => (
 	/>
 )
 
-
-
-
-
 export default Avatar;
