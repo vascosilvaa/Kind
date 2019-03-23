@@ -3,7 +3,6 @@ import Message from './Message';
 import Constants from '../configs/constants';
 import { Query } from "react-apollo";
 import { GET_PERSON_CLIENT } from '../graphql/queries/persons';
-import { GET_MESSAGES_BY_ROOM } from '../graphql/queries/chat';
 import Loader from './Loader';
 
 class ChatSection extends React.PureComponent {

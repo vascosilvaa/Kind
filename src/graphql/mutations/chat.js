@@ -9,9 +9,11 @@ const ADD_CHAT = gql`
   `
 
 const ADD_MESSAGE = gql`
-    mutation createMessage($userId: ID!, $roomId: ID!, $content: String!) {
-        createMessage(userId: $userId, roomId: $roomId, content: $content) {
-            id
+    mutation postMessage($userId: ID!, $roomId: ID!, $content: String!) {
+        postMessage (userId: $userId, roomId: $roomId, content: $content) {
+            id,
+            sentiment,
+            isBully
         }
     }
   `

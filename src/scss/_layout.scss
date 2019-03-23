@@ -229,14 +229,36 @@ body {
 	color: $color_secondary;
 }
 
-.bot-feedback {
-	position: relative;
-    top: -20px;
-	left: -30px;
-	width: 40px;
-	height: 40px;
-	background: url('../assets/imgs/kind_talk.png');
-	background-size: cover;
-	background-repeat: repeat;
-	cursor: pointer;
+.bot-feedback-wrapper {
+	display: flex;
+
+	.bot-feedback {
+		&--right {
+			margin-right: -40px;
+		}
+		position: relative;
+		top: -20px;
+		width: 35px;
+		height: 35px;
+		
+		cursor: pointer;
+		&--red {
+			left: -55px;
+			background: url('../assets/imgs/kind_talk_red.png');
+			background-size: cover;
+			background-repeat: repeat;
+		}
+		&--yellow {
+			left: -30px;
+			background: url('../assets/imgs/kind_talk_yellow.png');
+			background-size: cover;
+			background-repeat: repeat;
+		}
+		&--green {
+			left: -80px;
+			background: url('../assets/imgs/kind_talk_green.png');
+			background-size: cover;
+			background-repeat: repeat;
+		}	
+	}
 }

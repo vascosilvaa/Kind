@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Challenges
+- HACK FOR GOOD - Children and youth well-being
+- MICROSOFT - Build The Intelligent Edge with Azure IoT
 
-## Available Scripts
 
-In the project directory, you can run:
+## Meet *kind*
 
-### `npm start`
+*Kind* came from a distant planet to combat bullying. He becomes very sad when he notices that one child is bad to another. Despite this, he always sees the good in people, so he warns that such attitudes can psychologically hurt the other and suggests a change of approach.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Image of bot](https://github.com/vascosilvaa/Kind/blob/master/src/assets/imgs/kind_intro.png?raw=true)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## What is *kind*?
+Behind a screen we tend to act on impulse and send messages with content that can hurt the feelings of those who receive them. This is called **CyberBullying**.
 
-### `npm test`
+Both real-world and online bullying can have serious emotional consequences for children. Sometimes CyberBullying can be easy to spot, seeing an answer to a tweet, post on Facebook, comment or photos on Instagram, etc…But it’s not that easy to know if children are suffering CyberBullying on Chat groups, since we can’t see their messages. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**What if bullies had someone who made them rethink their messages before sending them? Would they write things differently?**
 
-### `npm run build`
+*Kind* acts as a mediator in the conversation between two children. When it detects a message that fits into bullying, will intercept the message and recommend the issuer to reconsider their actions, rewarding the child if he or she acts in a correct way.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We know that some words can have double meanings and the message can be considered offensive and not be. In this way, we will not limit the communication. The bullying message, when sent, even though kind recommend the child not to, can be  seen by the recipient but he or she get an alert saying that that message may contain strong words and will only see the message if they want to. 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+With *kind* is intended to **reduce the impacts of CyberBullying**, **raising awareness** of bullies and alerting them to their attitudes. In addition, we aim to **mitigate the victim's suffering** and **report bullying**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## *a kind* of technical description
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+*kind* is a **Bot As A Service**. It provides an API that allows chat application to intercept users messages and ask *kind* for analyses and feedback, before delivering the message to the end users. 
+For each message, *kind* will:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Use his internal AI algorithm to analyze message content and produce a risk assessment supported by a set of sentiments, using Microsoft Cognitive Services with custom made Machine Learning;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Make a decision about the best feedback based on user’s age and the risk assessment for the message, supported by the dataset being built by the team;
 
-## Learn More
+- Answer the request providing information to be delivered for the final users (sender and receivers), including text and additional resources (photo, video, link,...). *Kind* can also use a different personality for specific age ranges;
+provide links to give feedback about false positives and false negatives.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We also provide a Chat As A Service for an easier integration in educational platforms where schools don’t have the required technological skills to use the Kind Bot API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#

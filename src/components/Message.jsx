@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Constants from '../configs/constants';
 import Avatar from './Avatar';
 
@@ -13,6 +13,7 @@ const Message = props => {
 const _renderMessageSent = ({ content }) => {
     const [kind, setKind] = useState(Math.random() >= 0.5);
     const [deleted, setDeleted] = useState(false);
+    const [hover, setHover] = useState(false);
 
     const _handleConfirm = () => {
         setDeleted(false);
@@ -27,13 +28,14 @@ const _renderMessageSent = ({ content }) => {
     return (
         <div className="bot-wrapper">
             {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--right padding-t-15"><span className="advise-alert">Auch... </span>Could you please try to be kinder?</div>}
-            <div className='message message__sent' >
+            <div className='message message__sent' onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 {(!kind || deleted) && <Avatar type={deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={60} alt="bot" />}
                 <div>
                     <div className={`message__baloon${deleted ? '--sent-deleted' : '--sent'}`}>
                         {deleted ? 'Your message was deleted.' : content}
                     </div>
                 </div>
+                {hover && kind && <BotFeedback isRight={true} />}
             </div>
             {!kind && (
                 <>
@@ -68,15 +70,21 @@ const _renderMessageReceived = ({ content, user }) => {
         setKind(true);
     }
 
+    const isBotActive = useMemo(() => {
+        return !kind && !deleted
+    }, [kind, deleted])
+
     return (
         <div className="bot-wrapper">
             {!kind && <div className="bot-sent-advise-top bot-sent-advise-top--left padding-t-15">This message contains strong words.</div>}
+
             <div className='message message__received' onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                <Avatar type={(kind && !deleted) ? Constants.Avatar.Rounded : deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={kind ? 40 : 60} alt="test" src={user.photo} />
-                <div className={`message__baloon${deleted ? '--received-deleted blur' : '--received'} ${kind ? '' : 'blur'}`} >
+                <Avatar type={Constants.Avatar.Rounded} size={40} alt="test" src={user.photo} />
+                <div className={`message__baloon${deleted ? '--received-deleted blur' : '--received'} ${kind ? '' : 'blur'}`}>
                     {content}
                 </div>
-                {hover && kind && _renderBotFeedback()}
+                {hover && kind && <BotFeedback isRight={false} />}
+                {isBotActive && <Avatar type={deleted ? Constants.Avatar.BotHappy : Constants.Avatar.BotSad} size={60} alt="test" />}
             </div>
             {!kind && (
                 <>
@@ -96,9 +104,21 @@ const _renderMessageReceived = ({ content, user }) => {
     )
 }
 
-const _renderBotFeedback = () => (
-    <div className="bot-feedback" />
-)
+const BotFeedback = (isRight) => {
+    const [hoverFeed, setHoverFeed] = useState(false);
+    return (
+        <div className='bot-feedback-wrapper'>
+            <div className={`bot-feedback bot-feedback--yellow ${isRight ? 'bot-feedback--right' : ''}`} onClick={() => setHoverFeed(!hoverFeed)} />
+            {hoverFeed &&
+                <>
+                    <div className={`bot-feedback bot-feedback--red ${isRight ? 'bot-feedback--right' : ''}`} />
+                    <div className={`bot-feedback bot-feedback--green ${isRight ? 'bot-feedback--right' : ''}`} />
+                </>
+            }
+
+        </div>
+    )
+}
 
 
 export default Message;

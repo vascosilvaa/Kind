@@ -28,7 +28,7 @@ const _renderBotAvatar = ({ size, alt, type }) => (
 	<img
 		style={{ minWidth: `${size}px`, minHeight: `${size}px` }}
 		className="avatar avatar__bot"
-		src={type == Constants.Avatar.BotSad ? kind_sad : kind_happy}
+		src={type === Constants.Avatar.BotSad ? kind_sad : kind_happy}
 		height={size}
 		width={size}
 		alt={alt}
