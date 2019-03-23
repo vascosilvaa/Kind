@@ -8,10 +8,9 @@ const ChatInput = ({ id_room, id_user }) => {
     return (
         <ApolloConsumer>
             {client => (
-
                 <Mutation mutation={ADD_MESSAGE}>
                     {(newMessage, { data }) => (
-                        <div className="chat-input" onKeyDown={e => { e.keyCode === 13 && _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e)) }}>
+                        <div className="chat-input" onKeyDown={e => { e.keyCode === 13 && _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e), client) }}>
                             <input placeholder="Write your message..." value={content} onChange={e => setContent(e.target.value)} />
                             <button type="submit" onClick={() => _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e), client)}><span className="fa fa-paper-plane" /></button>
                         </div>
