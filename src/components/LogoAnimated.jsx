@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import lottie from 'lottie-web'
-import animationData from './../assets/animations/sleepy'
+import animationData from './../assets/animations/logo-intro'
 
 class AnimationChecker extends Component {
   constructor(props) {
@@ -9,16 +9,16 @@ class AnimationChecker extends Component {
   }
 
   state = {
-    anim: null,
+    anim: null
   }
 
   componentDidMount() {
     lottie.loadAnimation({
       container: this.animationRef.current,
       renderer: 'svg',
-      loop: true,
+      loop: false,
       autoplay: true,
-      animationData,
+      animationData
     })
   }
 
