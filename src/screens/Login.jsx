@@ -17,7 +17,7 @@ const Login = ({ userLogged, setUserLogged }) => (
       <main>
         <Link
           className="card card--first"
-          to={'/chat/conversations/cjtktzui30k6l0106tikpswo8'}
+          to={'/chat/conversations/cjtjfsfpl0svk0195v3d10iw8'}
           onClick={() => setUserLogged('cjtjfgpq90riq0104flsd68n8')}
         >
           <Avatar image={morty} />
@@ -26,7 +26,7 @@ const Login = ({ userLogged, setUserLogged }) => (
         </Link>
         <Link
           className="card"
-          to={'/chat/conversations/cjtktzui30k6l0106tikpswo8'}
+          to={'/chat/conversations/cjtjfsfpl0svk0195v3d10iw8'}
           onClick={() => setUserLogged('cjtjf7f8g0q790141ugksvlw3')}
         >
           <Avatar image={rick} />
