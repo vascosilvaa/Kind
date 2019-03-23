@@ -1,291 +1,412 @@
 // Layout --> Overall layout of the containers
 body {
-	margin:0;
-	font-family: $font_family_sans-serif;
-	font-weight: $font_weight_normal;
-	background: #e7e7e7
+  margin: 0;
+  font-family: $font_family_sans-serif;
+  font-weight: $font_weight_normal;
+  background: #e7e7e7;
 }
 
 .Login-page {
-	height: 100vh;
-	width: 100vw;
-	background: #090623;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  @media only screen and (max-width: 768px) {
+    padding-top: 24px;
+    h1 {
+      font-size: 1rem;
+    }
+    .Login-page__logo img {
+      width: 36px;
+    }
+    .Login-page main .card {
+      padding: 12px 12px;
+    }
+  }
+  z-index: 999;
+  height: 100%;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 16px;
 
-	.card {
-		background: white;
-		height: 400px;
-		width: 200px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 1rem;
-	}
+  a {
+    text-decoration: none;
+  }
+
+  &__background {
+    position: absolute;
+    padding-top: 24px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #090623;
+    background-image: url('../assets/imgs/confetti.svg');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position-x: 100px;
+    z-index: -1;
+    animation: slide 40s linear infinite;
+  }
+
+  &__avatar {
+    width: 134px;
+    height: 134px;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @keyframes slide {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -400px 0;
+    }
+  }
+
+  header {
+    @media only screen and (max-width: 768px) {
+      padding-top: 0;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+    h1 {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: bold;
+      max-width: 334px;
+    }
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+    .card {
+      padding: 20px 24px;
+      transition: all 0.2s ease-out;
+      border: 4px solid #130d31;
+      background: #0a0525;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 29px;
+      color: white;
+
+      &--first {
+        margin-right: 24px;
+        @media screen and (max-width: 640px) {
+          margin-right: 0px;
+        }
+      }
+
+      p {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold;
+      }
+
+      button {
+        cursor: pointer;
+        background: #eb2779;
+        border-radius: 8px;
+        color: white;
+        padding: 12px 20px;
+        border: 0;
+      }
+      &:hover {
+        transform: scale(1.05);
+        background: #15102e;
+      }
+    }
+  }
+  footer {
+    padding-top: 24px;
+    color: white;
+    background-color: #0a0525;
+    img {
+      width: 64px;
+    }
+  }
 }
 
 .Chat {
-	// max-width: 1200px;
-	// min-width: 320px;
-	margin: 0 auto;
-	height: 100vh;
+  // max-width: 1200px;
+  // min-width: 320px;
+  margin: 0 auto;
+  height: 100vh;
 
-	.Topbar {
-		height: 90px;
-		background-color: #090623;
-		color: $color_white;
-		display: flex;
-		align-items: center;
-		padding: 0 1.5rem;
+  .Topbar {
+    height: 90px;
+    background-color: #090623;
+    color: $color_white;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
 
-		.topbar {
-			&__title {
-				margin-right: auto;
-				font-size: $font_size_xxxl;
-				color: $color_white;
+    .topbar {
+      &__title {
+        margin-right: auto;
+        font-size: $font_size_xxxl;
+        color: $color_white;
 
-				.img-topbar {
-					margin-left: -27px; 
-					height: 100px;
-					width: 100px;
-					background: url('../assets/imgs/kind.png');
-					background-size: contain;
-				} 
-			}
+        .img-topbar {
+          margin-left: -27px;
+          height: 100px;
+          width: 100px;
+          background: url('../assets/imgs/kind.png');
+          background-size: contain;
+        }
+      }
 
-			&__actions {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				
-				.cog {
-					border-right: 1px solid $color_white;
-					padding: 0 .5rem; 
-					margin-right: 1rem;
-					span {
-						cursor: pointer;
-						font-size: $icon_size_l;
-						padding: 0.2rem .5rem;
+      &__actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-						&:hover {
-							color: $color_primary;
-						}
-					}
-				}
-			}
-		}
-	}
+        .cog {
+          border-right: 1px solid $color_white;
+          padding: 0 0.5rem;
+          margin-right: 1rem;
+          span {
+            cursor: pointer;
+            font-size: $icon_size_l;
+            padding: 0.2rem 0.5rem;
 
-	.Main {
-		height: 90%;
-		background-color: $color_white;
-		color: $color_white;
-		display: flex;
-		max-height: calc(100vh - 92px);
+            &:hover {
+              color: $color_primary;
+            }
+          }
+        }
+      }
+    }
+  }
 
-		.side-menu {
-			background: $color_white;
-			border-right: 1px solid $color_grey;
-			color: $color_black;
-			width: 25%;
-			transition: width 0.20s ease-out;
+  .Main {
+    height: 90%;
+    background-color: $color_white;
+    color: $color_white;
+    display: flex;
+    max-height: calc(100vh - 92px);
 
-			button {
-				display: none
-			}
+    .side-menu {
+      background: $color_white;
+      border-right: 1px solid $color_grey;
+      color: $color_black;
+      width: 25%;
+      transition: width 0.2s ease-out;
 
-			&--collapsed {
-				width: 87px;
-				button {
-					display: block;
-					position: relative;
-					top: -34px;
-					left: 87px;
-				}
+      button {
+        display: none;
+      }
 
-				.side-menu__tabs {
-					a {
-						margin-right: 1.5rem;
+      &--collapsed {
+        width: 87px;
+        button {
+          display: block;
+          position: relative;
+          top: -34px;
+          left: 87px;
+        }
 
-						&:hover {
-							padding: .75rem .7rem;
-						}
-					}
-				}
-			}
+        .side-menu__tabs {
+          a {
+            margin-right: 1.5rem;
 
-			&__tabs {
-				border-bottom: 1px solid $color_grey;
-				display: flex;
-				align-items: center;
-				padding: 0 1.5rem;
+            &:hover {
+              padding: 0.75rem 0.7rem;
+            }
+          }
+        }
+      }
 
-				a {
-					text-decoration: none;
-					color: $color_secondary;
-					padding: .8rem .7rem;
-					margin-right: .5rem;
-					font-size: $icon_size_xl;
+      &__tabs {
+        border-bottom: 1px solid $color_grey;
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
 
-					&:hover {
-						position: relative;
-						padding: 0.7rem;
-						top: 1px;
-						border-bottom: 2px solid $color_primary;
-					}
-				}
-			}
-			.side-menu-list {
-				background: $color-white;
-				max-height: calc(100vh - 140px);
-				overflow-y: auto;
+        a {
+          text-decoration: none;
+          color: $color_secondary;
+          padding: 0.8rem 0.7rem;
+          margin-right: 0.5rem;
+          font-size: $icon_size_xl;
 
-				&.iscollapsed {
-					margin-top: -17px;
-				}
-			}	
-		}
-		.chat-container {
-			color: $color_black;
-			width: 75%;
-			display: flex;
-			justify-content: space-between;
-			background: #f1f1f1;
+          &:hover {
+            position: relative;
+            padding: 0.7rem;
+            top: 1px;
+            border-bottom: 2px solid $color_primary;
+          }
+        }
+      }
+      .side-menu-list {
+        background: $color-white;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
 
-			&__wrapper{
-				width: 100%;
-				
-				.chat-navbar {
-					padding: 1rem 0;
-					border-bottom: 1px solid $color_grey;
-					height: fit-content;
-					padding: .5rem 1.5rem;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					background: $color-white;
-	
-					&__actions {
-						span {
-							cursor: pointer;
-							margin-left: 1.5rem;
-							color: $color_light_grey;
-							font-size: $icon_size_l;
-	
-							&.active {
-								color: $color_primary;
-							}
-	
-							&:hover {
-								color: $color_primary;
-							}
-						}
-					}
-				}
-			}
+        &.iscollapsed {
+          margin-top: -17px;
+        }
+      }
+    }
+    .chat-container {
+      color: $color_black;
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+      background: #f1f1f1;
 
-			&--collapsed {
-				width: 95%;
-			}
+      &__wrapper {
+        width: 100%;
 
-			.chat-info {
-				padding: 1rem 1rem;
-				border-left: 1px solid $color_grey;
-				width: 25%;
-			}
-		}
-	}
+        .chat-navbar {
+          padding: 1rem 0;
+          border-bottom: 1px solid $color_grey;
+          height: fit-content;
+          padding: 0.5rem 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: $color-white;
+
+          &__actions {
+            span {
+              cursor: pointer;
+              margin-left: 1.5rem;
+              color: $color_light_grey;
+              font-size: $icon_size_l;
+
+              &.active {
+                color: $color_primary;
+              }
+
+              &:hover {
+                color: $color_primary;
+              }
+            }
+          }
+        }
+      }
+
+      &--collapsed {
+        width: 95%;
+      }
+
+      .chat-info {
+        padding: 1rem 1rem;
+        border-left: 1px solid $color_grey;
+        width: 25%;
+      }
+    }
+  }
 }
 .bot-wrapper {
-	.bot-buttons {
-		margin-bottom: 1rem;
-		margin-left: 5.5rem;
+  .bot-buttons {
+    margin-bottom: 1rem;
+    margin-left: 5.5rem;
 
-		&--right {
-			text-align: right;
-			margin-right: 1.5rem;
-		}
+    &--right {
+      text-align: right;
+      margin-right: 1.5rem;
+    }
 
-		&--left {
-			text-align: left;
-			margin-left: 1.5rem;
-		}
+    &--left {
+      text-align: left;
+      margin-left: 1.5rem;
+    }
 
-		button {
-			margin-top: .5rem;
-			background: $color_white;
-			color: $color_black;
-			border:0;
-			border-radius: 6px;
-			padding: .3rem .8rem;
-			margin-right: .5rem;
-			cursor: pointer;
-			
-			&:hover {
-				background: $color_grey;
-			}
-		}	
-	}
+    button {
+      margin-top: 0.5rem;
+      background: $color_white;
+      color: $color_black;
+      border: 0;
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        background: $color_grey;
+      }
+    }
+  }
 }
 
 .bot-sent-advise-top {
-	font-size: $font_size_xs;
-    margin-top: .2rem;
-	&--right {
-		text-align: right;
-		margin-right: 1.5rem;
-	}
+  font-size: $font_size_xs;
+  margin-top: 0.2rem;
+  &--right {
+    text-align: right;
+    margin-right: 1.5rem;
+  }
 
-	&--left {
-		text-align: left;
-		margin-left: 1.5rem;
-	}
+  &--left {
+    text-align: left;
+    margin-left: 1.5rem;
+  }
 
-	.advise-alert{
-		color: $color_state_busy;
-		font-weight: $font_weight_bold;
-	}
-	color: $color_secondary;
+  .advise-alert {
+    color: $color_state_busy;
+    font-weight: $font_weight_bold;
+  }
+  color: $color_secondary;
 }
 
 .bot-feedback-wrapper {
-	display: flex;
+  display: flex;
 
-	.bot-feedback {
-		&--right {
-			margin-right: -40px;
-		}
-		position: relative;
-		top: -20px;
-		width: 35px;
-		height: 35px;
-		cursor: pointer;
-		
-		&--red {
-			left: -55px;
-			background: url('../assets/imgs/kind_talk_red.png');
-			background-size: cover;
-			background-repeat: repeat;
-		}
-		&--yellow {
-			left: -30px;
-			background: url('../assets/imgs/kind_talk_yellow.png');
-			background-size: cover;
-			background-repeat: repeat;
-		}
-		&--green {
-			left: -80px;
-			background: url('../assets/imgs/kind_talk_green.png');
-			background-size: cover;
-			background-repeat: repeat;
-		}	
-	}
+  .bot-feedback {
+    &--right {
+      margin-right: -40px;
+    }
+    position: relative;
+    top: -20px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+
+    &--red {
+      left: -55px;
+      background: url('../assets/imgs/kind_talk_red.png');
+      background-size: cover;
+      background-repeat: repeat;
+    }
+    &--yellow {
+      left: -30px;
+      background: url('../assets/imgs/kind_talk_yellow.png');
+      background-size: cover;
+      background-repeat: repeat;
+    }
+    &--green {
+      left: -80px;
+      background: url('../assets/imgs/kind_talk_green.png');
+      background-size: cover;
+      background-repeat: repeat;
+    }
+  }
 }
 
 .no-messages {
-	font-size: $font_size_m;
-	color: $color_black;
-	font-weight: $font_weight_normal;
-	padding: .5rem 1.5rem;;
+  font-size: $font_size_m;
+  color: $color_black;
+  font-weight: $font_weight_normal;
+  padding: 0.5rem 1.5rem;
 }
