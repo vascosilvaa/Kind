@@ -16,7 +16,7 @@ const Login = ({ userLogged, setUserLogged }) => (
       </header>
       <main>
         <Link
-          className="card"
+          className="card card--first"
           to={'/chat/conversations/cjtktzui30k6l0106tikpswo8'}
           onClick={() => setUserLogged('cjtjfgpq90riq0104flsd68n8')}
         >

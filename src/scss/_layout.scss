@@ -27,7 +27,6 @@ body {
   flex-direction: column;
   text-align: center;
   font-size: 16px;
-  background-color: #0a0525;
 
   a {
     text-decoration: none;
@@ -99,11 +98,6 @@ body {
       flex-direction: column;
     }
     .card {
-      @media only screen and (max-width: 768px) {
-        &:first-child {
-          margin-right: 0;
-        }
-      }
       padding: 20px 24px;
       transition: all 0.2s ease-out;
       border: 4px solid #130d31;
@@ -115,8 +109,11 @@ body {
       border-radius: 29px;
       color: white;
 
-      &:first-child {
+      &--first {
         margin-right: 24px;
+        @media screen and (max-width: 640px) {
+          margin-right: 0px;
+        }
       }
 
       p {
