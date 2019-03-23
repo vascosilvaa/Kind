@@ -38,6 +38,7 @@
 		"apollo-link-http": "^1.5.14",
 		"apollo-link-state": "^0.4.2",
 		"apollo-link-ws": "^1.0.17",
+		"axios": "^0.18.0",
 		"graphql": "^14.1.1",
 		"moment": "^2.24.0",
 		"react-apollo": "^2.5.2",

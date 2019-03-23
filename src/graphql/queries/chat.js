@@ -62,9 +62,18 @@ const GET_MESSAGES_BY_ROOM = gql`
   }
 `
 
+const GET_SCORE = gql`
+  query getScore($message: String!) {
+    score(message: $message) {
+      sentiment
+      isBully
+    }
+  }
+`
 
 export {
   GET_CHAT_BY_ID,
   GET_CHATS_BY_PERSON,
-  GET_MESSAGES_BY_ROOM
+  GET_MESSAGES_BY_ROOM,
+  GET_SCORE
 };

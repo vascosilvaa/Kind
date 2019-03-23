@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
-import { Mutation } from "react-apollo";
-
+import { Mutation, Query, ApolloConsumer } from "react-apollo";
+import Loader from './Loader';
 import { ADD_MESSAGE } from '../graphql/mutations/chat';
+import { GET_SCORE } from '../graphql/queries/chat';
+import axios from 'axios';
 
 const ChatInput = ({ id_room, id_user }) => {
     const [content, setContent] = useState('');
     return (
-        <Mutation mutation={ADD_MESSAGE}>
-            {(newMessage, { data }) => (
-                <div className="chat-input" onKeyDown={e => { e.keyCode === 13 && _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e)) }}>
-                    <input placeholder="Write your message..." value={content} onChange={e => setContent(e.target.value)} />
-                    <button type="submit" onClick={() => _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e))}><span className="fa fa-paper-plane" /></button>
-                </div>
-            )}
+        <ApolloConsumer>
+            {client => (
 
-        </Mutation>
+                <Mutation mutation={ADD_MESSAGE}>
+                    {(newMessage, { data }) => (
+                        <div className="chat-input" onKeyDown={e => { e.keyCode === 13 && _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e)) }}>
+                            <input placeholder="Write your message..." value={content} onChange={e => setContent(e.target.value)} />
+                            <button type="submit" onClick={() => _handleCreateMessage(content, newMessage, id_room, id_user, e => setContent(e), client)}><span className="fa fa-paper-plane" /></button>
+                        </div>
+                    )}
+                </Mutation>
+            )}
+        </ApolloConsumer>
     )
 }
 
-const _handleCreateMessage = async (content, newMessage, id_room, id_user, setContent) => {
-    console.log(id_user, id_room, content)
+const _handleCreateMessage = async (content, newMessage, id_room, id_user, setContent, client) => {
     if (content && content !== '') {
-        await newMessage({ variables: { userId: id_user, roomId: id_room, content: content } });
+        const sentiment = await client.query({
+            query: GET_SCORE,
+            variables: { message: content }
+        });
+        await newMessage({ variables: { userId: id_user, roomId: id_room, content: content, score: sentiment.data.score.sentiment } });
         setContent('');
     } else {
         return undefined;

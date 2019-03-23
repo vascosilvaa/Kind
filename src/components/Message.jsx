@@ -10,8 +10,8 @@ const Message = props => {
     }
 }
 
-const _renderMessageSent = ({ content }) => {
-    const [kind, setKind] = useState(Math.random() >= 0.5);
+const _renderMessageSent = ({ content, score }) => {
+    const [kind, setKind] = useState(score >= 0.5);
     const [deleted, setDeleted] = useState(false);
     const [hover, setHover] = useState(false);
 
@@ -56,10 +56,11 @@ const _renderMessageSent = ({ content }) => {
     )
 }
 
-const _renderMessageReceived = ({ content, user }) => {
-    const [kind, setKind] = useState(Math.random() >= 0.5);
+const _renderMessageReceived = ({ content, user, score }) => {
+    const [kind, setKind] = useState(score >= 0.5);
     const [deleted, setDeleted] = useState(false);
     const [hover, setHover] = useState(false);
+
     const _handleConfirm = () => {
         setDeleted(false);
         setKind(true);
