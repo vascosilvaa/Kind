@@ -1,8 +1,8 @@
 import React from 'react'
-import logo from './../assets/imgs/logo.svg'
 import morty from './../assets/imgs/morty.png'
 import rick from './../assets/imgs/rick.png'
 import pixelscamp from './../assets/imgs/pixelscamp.svg'
+import LogoAnimated from '../components/LogoAnimated'
 import { Link } from 'react-router-dom'
 
 const Login = ({ userLogged, setUserLogged }) => (
@@ -10,7 +10,9 @@ const Login = ({ userLogged, setUserLogged }) => (
     <div className="Login-page">
       <header>
         <div className="Login-page__logo">
-          <img src={logo} alt="kind logo" />
+          <div className="Login-page__anim">
+            <LogoAnimated />
+          </div>
           <h1>Join the chat with one of the accounts below, be kind!</h1>
         </div>
       </header>

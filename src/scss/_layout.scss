@@ -12,9 +12,6 @@ body {
     h1 {
       font-size: 1rem;
     }
-    .Login-page__logo img {
-      width: 36px;
-    }
     .Login-page main .card {
       padding: 12px 12px;
     }
@@ -27,6 +24,16 @@ body {
   flex-direction: column;
   text-align: center;
   font-size: 16px;
+
+  &__logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__anim {
+    width: 124px;
+  }
 
   a {
     text-decoration: none;
@@ -84,6 +91,7 @@ body {
     padding-top: 24px;
     h1 {
       color: white;
+      margin-top: 0;
       font-size: 1.6rem;
       font-weight: bold;
       max-width: 334px;
