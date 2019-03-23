@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Mutation, Query, ApolloConsumer } from "react-apollo";
-import Loader from './Loader';
+import { Mutation, ApolloConsumer } from "react-apollo";
 import { ADD_MESSAGE } from '../graphql/mutations/chat';
 import { GET_SCORE } from '../graphql/queries/chat';
-import axios from 'axios';
 
 const ChatInput = ({ id_room, id_user }) => {
     const [content, setContent] = useState('');
