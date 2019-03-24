@@ -24,7 +24,7 @@ class ChatSection extends React.PureComponent {
 			<Query query={GET_PERSON_CLIENT}>
 				{({ loading, error, data, client }) => {
 					if (loading) return <Loader />;
-					if (error) return `Error! ${error.message}`;
+					if (error) return <Loader />
 					return (
 
 						<div className={`chat-section`}>

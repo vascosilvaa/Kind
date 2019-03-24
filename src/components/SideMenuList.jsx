@@ -77,7 +77,7 @@ const _renderPersonsMenu = props => (
     <Query query={GET_PERSON_CLIENT}>
       {({ loading, error, data, client }) => {
         if (loading) return <Loader />;
-        if (error) return `Error! ${error.message}`;
+        if (error) return <Loader />
         return (
           <Query query={GET_PERSONS} variables={{ id: data.user_logged.id }}>
             {({ loading, error, data }) => {
@@ -109,7 +109,7 @@ const _renderConversationsMenu = props => (
     <Query query={GET_PERSON_CLIENT}>
       {({ loading, error, data, client }) => {
         if (loading) return <Loader />;
-        if (error) return `Error! ${error.message}`;
+        if (error) return <Loader />
         return (
           <Query
             query={GET_CHATS_BY_PERSON}
