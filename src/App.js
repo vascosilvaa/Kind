@@ -19,11 +19,11 @@ import NoMatch from './screens/NoMatch';
 const cache = new InMemoryCache()
 
 const httpLink = new HttpLink({
-  uri: `https://api.graph.cool/simple/v1/cjtjemw3i1iy70158kr25sqw6`
+  uri: process.env.REACT_APP_GRAPHCOOL_LINK
 })
 
 const wsLink = new WebSocketLink({
-  uri: `wss://subscriptions.graph.cool/v1/cjtjemw3i1iy70158kr25sqw6`,
+  uri: process.env.REACT_APP_GRAPHCOOL_WS,
   options: {
     reconnect: true
   }
